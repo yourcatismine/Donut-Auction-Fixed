@@ -1,0 +1,144 @@
+settings:
+  max-auction-listed: 5
+  disabled-items:
+    - BEDROCK
+    - BARRIER
+  max-auction-price: 1000000000000.0
+
+messages:
+  max-listings: "&cYou have reached the maximum number of listings ({max})."
+  disabled-item: "&cThis item is disabled from the auction house."
+  max-price-exceeded: "&#ff4444Price exceeds the maximum allowed limit!"
+
+sounds:
+  villager-no: ENTITY_VILLAGER_NO
+  prev-page: UI_BUTTON_CLICK
+  next-page: UI_BUTTON_CLICK
+  refresh: UI_BUTTON_CLICK
+  default-button: UI_BUTTON_CLICK
+  search: UI_BUTTON_CLICK
+  confirm-sell: ENTITY_EXPERIENCE_ORB_PICKUP
+
+main-gui:
+  title: "Auction House - Page %page%/%max-page%"
+  items-per-page: 45
+  sort-colors:
+    current: "&a"
+    not-current: "&7"
+  lore-item:
+    - "&7Seller: &f{seller}"
+    - "&7Price: &6${priceFormatted}"
+    - "&7Time Left: &e{time}"
+  items:
+    previous-page:
+      slot: 45
+      material: ARROW
+      display-name: "&cPrevious Page"
+    sort:
+      slot: 49
+      material: HOPPER
+      display-name: "&eSort Order"
+      lore:
+        - "{mode‐highest}"
+        - "{mode‐lowest}"
+        - "{mode‐lastlisted}"
+        - "{mode‐recentlylisted}"
+    search:
+      slot: 50
+      material: OAK_SIGN
+      display-name: "&aSearch"
+    refresh:
+      slot: 51
+      material: SUNFLOWER
+      display-name: "&eRefresh"
+    your-items:
+      slot: 52
+      material: CHEST
+      display-name: "&6Your Items"
+    next-page:
+      slot: 53
+      material: ARROW
+      display-name: "&aNext Page"
+
+sell-confirm-gui:
+  title: "Confirm Listing"
+  preview-lore:
+    - "&7Price: &6${priceFormatted}"
+  decline-button:
+    slot: 11
+    material: RED_WOOL
+    display-name: "&cCancel"
+    lore:
+      - "&7Click to cancel."
+  confirm-button:
+    slot: 15
+    material: GREEN_WOOL
+    display-name: "&aConfirm"
+    lore:
+      - "&7Click to list item."
+
+purchase-confirm-gui:
+  title: "Confirm Purchase"
+  decline-button:
+    slot: 11
+    material: RED_WOOL
+    display-name: "&cCancel"
+  confirm-button:
+    slot: 15
+    material: GREEN_WOOL
+    display-name: "&aBuy Now"
+
+your-items-gui:
+  title: "Your Listings"
+  help:
+    slot: 4
+    material: PAPER
+    display-name: "&eInfo"
+    lore:
+      - "&7Click an item to retrieve it."
+  back-button:
+    slot: 22
+    material: ARROW
+    display-name: "&cBack"
+  transactions-button:
+    slot: 26
+    material: BOOK
+    display-name: "&eTransactions"
+
+transactions-gui:
+  title: "Transaction History"
+  items-per-page: 45
+  lore-sold:
+    - "&7Sold to: {player}"
+    - "&7Price: {amount}"
+    - "&7Time: {time-ago}"
+  lore-bought:
+    - "&7Bought from: {player}"
+    - "&7Price: {amount}"
+    - "&7Time: {time-ago}"
+  items:
+    previous-page:
+      slot: 45
+      material: ARROW
+      display-name: "&cPrevious Page"
+    sort:
+      slot: 46
+    refresh:
+      slot: 51
+      material: SUNFLOWER
+      display-name: "&eRefresh"
+    search:
+      slot: 50
+      material: OAK_SIGN
+      display-name: "&aSearch"
+    next-page:
+      slot: 53
+      material: ARROW
+      display-name: "&aNext Page"
+  stats-button:
+    slot: 49
+    material: PAPER
+    display-name: "&bStats"
+    lore:
+      - "&7Spent: {spent-amount}"
+      - "&7Made: {made-amount}"

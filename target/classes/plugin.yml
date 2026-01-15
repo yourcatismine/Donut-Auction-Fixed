@@ -1,0 +1,14 @@
+name: DonutAuction
+version: 1.0-SNAPSHOT
+main: me.clanify.donutAuction.DonutAuction
+api-version: 1.16
+authors: [me, clanify]
+depend: [Vault]
+
+commands:
+  ah:
+    description: Opens the Auction House
+    aliases: [auction]
+  donutauction:
+    description: Admin commands for DonutAuction
+    permission: donutauction.admin
