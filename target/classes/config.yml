@@ -1,144 +1,210 @@
 settings:
-  max-auction-listed: 5
+  item-time: 86400 # how long until the auction item timer runs out/gets returned to the seller!
+
+  max-auction-listed: 25
+
   disabled-items:
     - BEDROCK
-    - BARRIER
+
   max-auction-price: 1000000000000.0
 
 messages:
-  max-listings: "&cYou have reached the maximum number of listings ({max})."
-  disabled-item: "&cThis item is disabled from the auction house."
-  max-price-exceeded: "&#ff4444Price exceeds the maximum allowed limit!"
+  no-self-purchase: "&#ff4444You cannot purchase your own item!"
+  item-not-available: "&#ff4444Item is no longer available."
+  insufficient-funds: "&#ff4444You do not have enough money."
+  disabled-item: "&#ff4444You cannot sell that item!"
+  max-listings: "&#ff4444You already have {count}/{max} items listed!"
+  listing-success: "&#44ff44Item listed for sale at &#ffffff${priceFormatted}&#44ff44!"
+  purchase-success: "&#44ff44Purchased item for &#ffffff${priceFormatted}&#44ff44!"
+  returned-item: "&#44ff44Your listing has been returned to you."
+  inventory-full: "&#ff4444Your inventory is full!"
+  sold-notify: "&#44ff44You sold {item} to {buyer} for &#ffffff${priceFormatted}&#44ff44!"
+  search-prompt: "&#44ffffPlease type &#ffffffitem name &#44ffffto search."
+
 
 sounds:
-  villager-no: ENTITY_VILLAGER_NO
-  prev-page: UI_BUTTON_CLICK
-  next-page: UI_BUTTON_CLICK
-  refresh: UI_BUTTON_CLICK
-  default-button: UI_BUTTON_CLICK
-  search: UI_BUTTON_CLICK
-  confirm-sell: ENTITY_EXPERIENCE_ORB_PICKUP
+  prev-page: "ITEM_BOOK_PAGE_TURN"
+  next-page: "ITEM_BOOK_PAGE_TURN"
+  refresh: "UI_TOAST_IN"
+  default-button: "UI_BUTTON_CLICK"
+  search: "UI_BUTTON_CLICK"
+  confirm-sell: "UI_CARTOGRAPHY_TABLE_TAKE_RESULT"
+  villager-no: "ENTITY_VILLAGER_NO"
 
 main-gui:
-  title: "Auction House - Page %page%/%max-page%"
+  title: "&#444444ᴀᴜᴄᴛɪᴏɴ (Page %page%)"
+
   items-per-page: 45
   sort-colors:
-    current: "&a"
-    not-current: "&7"
+    current: "&#34ee80"
+    not-current: "&f"
+
   lore-item:
-    - "&7Seller: &f{seller}"
-    - "&7Price: &6${priceFormatted}"
-    - "&7Time Left: &e{time}"
+    - "&fPrice: &#34ee80${priceFormatted}"
+    - "&fSeller: &#34ee80{seller}"
+    - "&fTime left: &#34ee80{time}"
+
   items:
     previous-page:
+      material: ARROW
       slot: 45
-      material: ARROW
-      display-name: "&cPrevious Page"
-    sort:
-      slot: 49
-      material: HOPPER
-      display-name: "&eSort Order"
+      display-name: "&#34ee80ʙᴀᴄᴋ"
       lore:
-        - "{mode‐highest}"
-        - "{mode‐lowest}"
-        - "{mode‐lastlisted}"
-        - "{mode‐recentlylisted}"
+        - "&fGo to the previous page"
+
+    sort:
+      material: CAULDRON
+      slot: 47
+      display-name: "&#34ee80ѕᴏʀᴛ"
+      lore:
+        - "• {mode‐highest}"
+        - "• {mode‐lowest}"
+        - "• {mode‐lastlisted}"
+        - "• {mode‐recentlylisted}"
+
+
     search:
-      slot: 50
       material: OAK_SIGN
-      display-name: "&aSearch"
+      slot: 50
+      display-name: "&#34ee80ѕᴇᴀʀᴄʜ"
+      lore:
+        - "&fClick to search"
+
     refresh:
-      slot: 51
-      material: SUNFLOWER
-      display-name: "&eRefresh"
+      material: ANVIL
+      slot: 49
+      display-name: "&#34ee80ʀᴇꜰʀᴇѕʜ"
+      lore:
+        - "&fClick to refresh"
+
     your-items:
-      slot: 52
       material: CHEST
-      display-name: "&6Your Items"
+      slot: 51
+      display-name: "&#34ee80ʏᴏᴜʀ ɪᴛᴇᴍѕ"
+      lore:
+        - "&fClick to view the items you have listed"
+
     next-page:
-      slot: 53
       material: ARROW
-      display-name: "&aNext Page"
+      slot: 53
+      display-name: "&#34ee80ɴᴇхᴛ"
+      lore:
+        - "&fGo to the next page"
+
 
 sell-confirm-gui:
-  title: "Confirm Listing"
+  title: "&#444444Confirm Listing"
+
   preview-lore:
-    - "&7Price: &6${priceFormatted}"
+    - "&fYou're going to sell"
+    - "&fthis item for &#34ee80${priceFormatted}"
+
   decline-button:
+    material: RED_STAINED_GLASS_PANE
     slot: 11
-    material: RED_WOOL
-    display-name: "&cCancel"
+    display-name: "&#ff0000ᴅᴇᴄʟɪɴᴇ"
     lore:
-      - "&7Click to cancel."
+      - "&fClick to cancel the sale"
+
   confirm-button:
+    material: LIME_STAINED_GLASS_PANE
     slot: 15
-    material: GREEN_WOOL
-    display-name: "&aConfirm"
+    display-name: "&#00ff00ᴄᴏɴꜰɪʀᴍ"
     lore:
-      - "&7Click to list item."
+      - "&fClick to sell"
 
 purchase-confirm-gui:
-  title: "Confirm Purchase"
+  title: "&#444444Confirm Purchase"
+
   decline-button:
+    material: RED_STAINED_GLASS_PANE
     slot: 11
-    material: RED_WOOL
-    display-name: "&cCancel"
+    display-name: "&#ff0000Decline"
+    lore:
+      - "&#ff4444Click to cancel purchase"
+
   confirm-button:
+    material: LIME_STAINED_GLASS_PANE
     slot: 15
-    material: GREEN_WOOL
-    display-name: "&aBuy Now"
+    display-name: "&#00ff00Confirm"
+    lore:
+      - "&#44ff44Click to confirm purchase"
+
 
 your-items-gui:
-  title: "Your Listings"
+  title: "&#444444Your Listings"
+
   help:
-    slot: 4
     material: PAPER
-    display-name: "&eInfo"
+    slot: 0
+    display-name: "&#ffffaaHow to list an item?"
     lore:
-      - "&7Click an item to retrieve it."
+      - ""
+      - "&fHold an item and use"
+      - "&fUse /ah sell (price)"
+
+
   back-button:
-    slot: 22
-    material: ARROW
-    display-name: "&cBack"
+    material: RED_STAINED_GLASS_PANE
+    slot: 18
+    display-name: "&#f3300dBack"
+    lore:
+      - "&fClick to return"
+
   transactions-button:
+    material: WRITABLE_BOOK
     slot: 26
-    material: BOOK
-    display-name: "&eTransactions"
+    display-name: "&#34ee80Transactions"
+    lore:
+      - "&fClick to see your purchases and sales"
+
 
 transactions-gui:
-  title: "Transaction History"
+  title: "&#444444ᴛʀᴀɴѕᴀᴄᴛɪᴏɴѕ (Page %page%)"
+
   items-per-page: 45
+
   lore-sold:
-    - "&7Sold to: {player}"
-    - "&7Price: {amount}"
-    - "&7Time: {time-ago}"
+    - "&#34ee80{player} &fbought your &#8a0df3{item} &ffor &#34ee80${amount}"
+    - "&#34ee80{time-ago} ago"
   lore-bought:
-    - "&7Bought from: {player}"
-    - "&7Price: {amount}"
-    - "&7Time: {time-ago}"
+    - "&fYou bought &#34ee80{player}'s &#8a0df3{item} &ffor &#34ee80${amount}"
+    - "&#34ee80{time-ago} ago"
+
+  stats-button:
+    material: BOOK
+    slot: 48
+    display-name: "&#34ee80ѕᴛᴀᴛѕ"
+    lore:
+      - "&fTotal spent: &#34ee80${spent-amount}"
+      - "&fTotal made: &#34ee80${made-amount}"
+
   items:
     previous-page:
+      material: ARROW
       slot: 45
-      material: ARROW
-      display-name: "&cPrevious Page"
-    sort:
-      slot: 46
-    refresh:
-      slot: 51
-      material: SUNFLOWER
-      display-name: "&eRefresh"
+      display-name: "&#34ee80ʙᴀᴄᴋ"
+      lore:
+        - "&fGo to the previous page"
+
     search:
-      slot: 50
       material: OAK_SIGN
-      display-name: "&aSearch"
+      slot: 50
+      display-name: "&#34ee80ѕᴇᴀʀᴄʜ"
+      lore:
+        - "&fClick to search by name"
+
+    refresh:
+      material: WRITABLE_BOOK
+      slot: 49
+      display-name: "&#34ee80ᴛʀᴀɴѕᴀᴄᴛɪᴏɴѕ"
+      lore:
+        - "&fClick to refresh"
+
     next-page:
-      slot: 53
       material: ARROW
-      display-name: "&aNext Page"
-  stats-button:
-    slot: 49
-    material: PAPER
-    display-name: "&bStats"
-    lore:
-      - "&7Spent: {spent-amount}"
-      - "&7Made: {made-amount}"
+      slot: 53
+      display-name: "&#34ee80ɴᴇхᴛ"
+      lore:
+        - "&fGo to the next page"
+
